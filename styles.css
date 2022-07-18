@@ -1,0 +1,33 @@
+h1 {
+    color: black;
+    font-size:2.5em;
+    text-align: center;
+}
+
+navbar {
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    overflow: hidden;
+    display: flex;
+    
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: center;
+}
+
+#bio {
+    text-align: center;
+}
+
+.post-preview {
+    border: 2;
+}
+
+.post-preview a{
+    display: block;
+    font-size: 1.5em;
+}
