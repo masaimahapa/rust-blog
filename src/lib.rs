@@ -72,12 +72,12 @@ pub fn lastest_posts() -> Html {
 
         <div class="post-preview">
         <a href="#">{"30 days of Rust - Day Twenty Two - Multi Threaded Web Server"}</a>
-        <span >{"July 15, 2022"}</span>
+        <span >{"July 12, 2022"}</span>
         </div>
 
         <div class="post-preview">
         <a href="#">{"30 days of Rust - Day Twenty One - Single Thread Web Server"}</a>
-        <span >{"July 14, 2022"}</span>
+        <span >{"July 11, 2022"}</span>
         </div>
         </div>
     }
