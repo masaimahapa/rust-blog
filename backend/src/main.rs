@@ -52,7 +52,7 @@ async fn manual_hello() -> impl Responder {
 }
 
 #[get("/blog/{id}")]
-async fn blog_post( : web::Path<usize>, data : web::Data<AppState>) -> impl Responder {
+async fn blog_post(id: web::Path<usize>, data : web::Data<AppState>) -> impl Responder {
     let first = &data.posts.get(0);
     let x = first.unwrap();
     Post {
