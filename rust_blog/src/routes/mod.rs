@@ -3,7 +3,7 @@ use yew::prelude::*;
 
 use crate::pages::{home::Home, 
     four_oh_four::FourOhFour,
-     post::Post,
+     post::BlogPost,
     projects::Projects,
     blog::Blog,
 contact::Contact};
@@ -34,7 +34,7 @@ pub fn switch(routes: &Route) ->  Html{
         },
         Route::Contact => html! {<Contact />},
         Route::Post {id} => html! {
-            <Post id={id.clone()}/>
+            <BlogPost id={id.clone()}/>
         },
         Route::NotFound => html! {<FourOhFour />}
     }

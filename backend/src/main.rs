@@ -7,7 +7,6 @@ use actix_web::{web , get,
     
      Responder, HttpResponse, HttpServer};
 
-
 use serde::Serialize;
 use rusqlite::{Connection, Result, params};
 
@@ -59,7 +58,7 @@ async fn blog_post(id: web::Path<usize>, data : web::Data<AppState>) -> impl Res
     let db_path = &data.db_path;
     let conn = Connection::open(db_path).unwrap();
 
-    let mut stmt = conn.prepare("SELECT id, title, content FROM posts WHERE ID = (?1) limit 1").unwrap();
+    let mut stmt = conn.prepare("SELECT id, title, content FROM posts WHERE ID = (?1) limit 1").expect(&format!("Could not find the post with id {}", id.to_string()));
     let mut posts = stmt.query_map(rusqlite::params![id.to_string()], |row| {
         Ok(Post {
             id:row.get("id")?,
@@ -68,13 +67,13 @@ async fn blog_post(id: web::Path<usize>, data : web::Data<AppState>) -> impl Res
         })
     }).unwrap();
 
+
     let found_post = posts.next().unwrap().unwrap();
 
     found_post
 }
 
 pub fn create_db() -> String{
-    // let conn = Connection::open_in_memory().unwrap();
     let conn = Connection::open("./test_db.db").unwrap();
     let db_path = conn.path().unwrap().to_str().unwrap();
     conn.execute(
